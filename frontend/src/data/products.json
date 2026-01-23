@@ -1,0 +1,620 @@
+{
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-22",
+    "categories": [
+        {
+            "id": "pizzas",
+            "name": "Pizzas",
+            "description": "Pizzas artesanales hechas en horno de leña"
+        },
+        {
+            "id": "hamburguesas",
+            "name": "Hamburguesas",
+            "description": "Deliciosas hamburguesas preparadas con carne premium"
+        },
+        {
+            "id": "bebidas",
+            "name": "Bebidas",
+            "description": "Refrescantes bebidas para acompañar tu comida"
+        }
+    ],
+    "products": [
+        {
+            "id": "pizza-pepperoni",
+            "category": "pizzas",
+            "name": "Pepperoni",
+            "image": "./img/menu/pizza-1.webp",
+            "alt": "Pizza Pepperoni con queso derretido",
+            "ingredients": [
+                "Salsa de tomate",
+                "Mozzarella",
+                "Pepperoni"
+            ],
+            "preparation": "Nuestra masa madre fermentada por 48 horas se estira a mano, se cubre con salsa artesanal de tomate San Marzano y se hornea a la leña hasta lograr un borde crujiente y dorado.",
+            "extras": [
+                {
+                    "name": "Queso Extra",
+                    "price": 25
+                },
+                {
+                    "name": "Champiñones",
+                    "price": 20
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-napolitana",
+            "category": "pizzas",
+            "name": "Napolitana",
+            "image": "./img/menu/pizza-2.webp",
+            "alt": "Pizza Napolitana con tomates frescos",
+            "ingredients": [
+                "Salsa de tomate",
+                "Mozzarella",
+                "Tomate fresco",
+                "Albahaca"
+            ],
+            "preparation": "Respetando la tradición italiana, usamos mozzarella flor di latte fresca, tomates cortados al momento y albahaca recién cosechada. Un clásico ligero y aromático.",
+            "extras": [
+                {
+                    "name": "Doble Mozzarella",
+                    "price": 30
+                },
+                {
+                    "name": "Aceitunas Negras",
+                    "price": 20
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-margherita",
+            "category": "pizzas",
+            "name": "Margherita",
+            "image": "./img/menu/pizza-3.webp",
+            "alt": "Pizza Margherita clásica italiana",
+            "ingredients": [
+                "Salsa de tomate",
+                "Mozzarella fresca",
+                "Albahaca",
+                "Aceite de oliva"
+            ],
+            "preparation": "La reina de las pizzas: salsa de tomate San Marzano D.O.P., mozzarella di bufala fresca y hojas de albahaca que se añaden justo al salir del horno.",
+            "extras": [
+                {
+                    "name": "Mozzarella Extra",
+                    "price": 30
+                },
+                {
+                    "name": "Tomate Cherry",
+                    "price": 15
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-cuatro-quesos",
+            "category": "pizzas",
+            "name": "Cuatro Quesos",
+            "image": "./img/menu/pizza-4.webp",
+            "alt": "Pizza Cuatro Quesos con variedad de quesos",
+            "ingredients": [
+                "Mozzarella",
+                "Gorgonzola",
+                "Parmesano",
+                "Provolone"
+            ],
+            "preparation": "Una sinfonía cremosa: base blanca con mozzarella, el picante del gorgonzola, la intensidad del parmesano reggiano y la suavidad del provolone.",
+            "extras": [
+                {
+                    "name": "Miel Picante",
+                    "price": 20
+                },
+                {
+                    "name": "Nueces",
+                    "price": 15
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-vegetariana",
+            "category": "pizzas",
+            "name": "Vegetariana",
+            "image": "./img/menu/pizza-5.webp",
+            "alt": "Pizza Vegetariana con verduras frescas",
+            "ingredients": [
+                "Pimientos",
+                "Champiñones",
+                "Cebolla",
+                "Aceitunas",
+                "Tomate"
+            ],
+            "preparation": "Un jardín en tu plato: vegetales cortados a mano cada mañana, asados ligeramente antes de hornearse para mantener su textura crujiente y sabor natural.",
+            "extras": [
+                {
+                    "name": "Queso de Cabra",
+                    "price": 35
+                },
+                {
+                    "name": "Espinacas baby",
+                    "price": 15
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-bbq-chicken",
+            "category": "pizzas",
+            "name": "BBQ Chicken",
+            "image": "./img/menu/pizza-6.webp",
+            "alt": "Pizza BBQ Chicken con salsa barbacoa",
+            "ingredients": [
+                "Salsa BBQ",
+                "Pollo",
+                "Cebolla morada",
+                "Cilantro"
+            ],
+            "preparation": "Pollo marinado por 24 horas y cocido a la parrilla, bañado en nuestra salsa BBQ ahumada casera y terminado con cebolla morada para un toque dulce y ácido.",
+            "extras": [
+                {
+                    "name": "Tocino",
+                    "price": 25
+                },
+                {
+                    "name": "Piña",
+                    "price": 15
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-mexicana",
+            "category": "pizzas",
+            "name": "Mexicana",
+            "image": "./img/menu/pizza-7.webp",
+            "alt": "Pizza Mexicana con jalapeños",
+            "ingredients": [
+                "Carne molida",
+                "Jalapeños",
+                "Frijoles",
+                "Chorizo"
+            ],
+            "preparation": "Salsa base de frijol negro refrito, cubierta con una mezcla de chorizo y carne sazonada. El toque final lo dan los jalapeños encurtidos.",
+            "extras": [
+                {
+                    "name": "Aguacate",
+                    "price": 25
+                },
+                {
+                    "name": "Crema ácida",
+                    "price": 10
+                },
+                {
+                    "name": "Orilla de Queso",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "pizza-calzone",
+            "category": "pizzas",
+            "name": "Calzone",
+            "image": "./img/menu/pizza-8.webp",
+            "alt": "Pizza Calzone rellena",
+            "ingredients": [
+                "Jamón",
+                "Queso ricotta",
+                "Mozzarella",
+                "Espinacas"
+            ],
+            "preparation": "Nuestra masa doblada en forma de media luna, rellena generosamente y sellada a mano para que los quesos se fundan en su propio vapor.",
+            "extras": [
+                {
+                    "name": "Salsa Marinara Extra",
+                    "price": 15
+                },
+                {
+                    "name": "Pepperoni dentro",
+                    "price": 25
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Pequeña",
+                    "price": 123.00
+                },
+                {
+                    "size": "Mediana",
+                    "price": 153.00
+                },
+                {
+                    "size": "Grande",
+                    "price": 223.00
+                },
+                {
+                    "size": "Familiar",
+                    "price": 323.00
+                }
+            ]
+        },
+        {
+            "id": "hamburguesa-clasica",
+            "category": "hamburguesas",
+            "name": "Clásica",
+            "image": "./img/menu/hamburguesa-1.webp",
+            "alt": "Hamburguesa Clásica con queso",
+            "ingredients": [
+                "Carne de res",
+                "Queso cheddar",
+                "Lechuga",
+                "Tomate",
+                "Cebolla"
+            ],
+            "preparation": "Carne 100% Angus molida diariamente, asada al carbón para sellar sus jugos. Servida en pan brioche artesanal tostado con mantequilla.",
+            "extras": [
+                {
+                    "name": "Tocino Crujiente",
+                    "price": 25
+                },
+                {
+                    "name": "Huevo Estrellado",
+                    "price": 20
+                },
+                {
+                    "name": "Queso Manchego",
+                    "price": 20
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Normal",
+                    "price": 123.00
+                },
+                {
+                    "size": "Carne doble",
+                    "price": 153.00
+                }
+            ]
+        },
+        {
+            "id": "hamburguesa-pollo",
+            "category": "hamburguesas",
+            "name": "Pollo",
+            "image": "./img/menu/hamburguesa-2.webp",
+            "alt": "Hamburguesa de Pollo crujiente",
+            "ingredients": [
+                "Pechuga empanizada",
+                "Mayonesa",
+                "Lechuga",
+                "Tomate"
+            ],
+            "preparation": "Pechuga de pollo marinada en suero de leche por 12 horas, empanizada con nuestra mezcla secreta de 11 especias y frita hasta alcanzar un dorado perfecto super crujiente.",
+            "extras": [
+                {
+                    "name": "Salsa Buffalo",
+                    "price": 10
+                },
+                {
+                    "name": "Queso Americano",
+                    "price": 15
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Normal",
+                    "price": 123.00
+                },
+                {
+                    "size": "Carne doble",
+                    "price": 153.00
+                }
+            ]
+        },
+        {
+            "id": "hamburguesa-vegetariana",
+            "category": "hamburguesas",
+            "name": "Vegetariana",
+            "image": "./img/menu/hamburguesa-3.webp",
+            "alt": "Hamburguesa Vegetariana",
+            "ingredients": [
+                "Portobello",
+                "Queso suizo",
+                "Aguacate",
+                "Lechuga"
+            ],
+            "preparation": "Un Portobello entero marinado en balsámico y asado a la parrilla como sustituto de carne. Jugoso, carnoso y lleno de sabor umami.",
+            "extras": [
+                {
+                    "name": "Cebolla Caramelizada",
+                    "price": 15
+                },
+                {
+                    "name": "Champiñones Extra",
+                    "price": 20
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Normal",
+                    "price": 123.00
+                },
+                {
+                    "size": "Extra queso",
+                    "price": 153.00
+                }
+            ]
+        },
+        {
+            "id": "hamburguesa-gourmet",
+            "category": "hamburguesas",
+            "name": "Gourmet",
+            "image": "./img/menu/hamburguesa-4.webp",
+            "alt": "Hamburguesa Gourmet premium",
+            "ingredients": [
+                "Carne Angus",
+                "Queso brie",
+                "Cebolla caramelizada",
+                "Arúgula"
+            ],
+            "preparation": "Una experiencia elevada: Carne Angus Select, queso Brie francés fundido, cebolla caramelizada lentamente en vino tinto y arúgula fresca para un toque de pimienta.",
+            "extras": [
+                {
+                    "name": "Foie Gras (Sintético)",
+                    "price": 50
+                },
+                {
+                    "name": "Trufa Negra",
+                    "price": 45
+                }
+            ],
+            "prices": [
+                {
+                    "size": "Normal",
+                    "price": 123.00
+                },
+                {
+                    "size": "Carne doble",
+                    "price": 153.00
+                }
+            ]
+        },
+        {
+            "id": "bebida-1",
+            "category": "bebidas",
+            "name": "Refresco",
+            "image": "./img/menu/bebida-1.webp",
+            "alt": "Refresco de cola",
+            "preparation": "Servido bien frío (3°C) para máxima carbonatación y refrescancia.",
+            "extras": [
+                {
+                    "name": "Vaso con Hielo",
+                    "price": 0
+                },
+                {
+                    "name": "Rodaja de Limón",
+                    "price": 0
+                }
+            ],
+            "prices": [
+                {
+                    "size": "500ml",
+                    "price": 35.00
+                }
+            ]
+        },
+        {
+            "id": "bebida-2",
+            "category": "bebidas",
+            "name": "Limonada",
+            "image": "./img/menu/bebida-2.webp",
+            "alt": "Limonada natural",
+            "preparation": "Hecha al momento con limones persas exprimidos a mano, agua purificada y un toque de jarabe natural.",
+            "extras": [
+                {
+                    "name": "Menta Fresca",
+                    "price": 5
+                },
+                {
+                    "name": "Agua Mineral",
+                    "price": 10
+                }
+            ],
+            "prices": [
+                {
+                    "size": "500ml",
+                    "price": 45.00
+                }
+            ]
+        },
+        {
+            "id": "bebida-3",
+            "category": "bebidas",
+            "name": "Agua Mineral",
+            "image": "./img/menu/bebida-3.webp",
+            "alt": "Agua mineral",
+            "preparation": "Agua de manantial carbonatada naturalmente, rica en minerales.",
+            "extras": [
+                {
+                    "name": "Preparada (Sal/Limón)",
+                    "price": 10
+                },
+                {
+                    "name": "Rodaja de Pepino",
+                    "price": 5
+                }
+            ],
+            "prices": [
+                {
+                    "size": "500ml",
+                    "price": 25.00
+                }
+            ]
+        },
+        {
+            "id": "bebida-4",
+            "category": "bebidas",
+            "name": "Jugo de Naranja",
+            "image": "./img/menu/bebida-4.webp",
+            "alt": "Jugo de naranja natural",
+            "preparation": "100% natural, exprimido cada mañana de naranjas valencianas dulces seleccionadas.",
+            "extras": [
+                {
+                    "name": "Sin Hielo",
+                    "price": 0
+                }
+            ],
+            "prices": [
+                {
+                    "size": "500ml",
+                    "price": 55.00
+                }
+            ]
+        }
+    ]
+}

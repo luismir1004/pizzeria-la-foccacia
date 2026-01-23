@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="Menú completo de Pizzería La Foccacia - Pizzas artesanales, hamburguesas gourmet, bebidas y más. Descubre nuestros precios y variedades." />
+	<meta name="keywords" content="menú pizzería, pizzas, hamburguesas, bebidas, La Foccacia, precios" />
+	<meta name="author" content="Pizzería La Foccacia" />
+	<meta name="robots" content="index, follow" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="menu" />
+	<meta property="og:title" content="Menú | Pizzería La Foccacia" />
+	<meta property="og:description" content="Descubre nuestras pizzas artesanales, hamburguesas gourmet y bebidas." />
+	<meta property="og:image" content="/img/menu/pizza-1.png" />
+	<meta property="og:locale" content="es_ES" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Menú | Pizzería La Foccacia" />
+	<meta name="twitter:description" content="Pizzas, hamburguesas y bebidas artesanales" />
+	<meta name="twitter:image" content="/img/menu/pizza-1.png" />
+
+	<!-- Preconnect -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	<!-- Favicon & PWA -->
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="apple-touch-icon" href="/pwa-192x192.png" />
+	<meta name="theme-color" content="#BE1E2D" />
+
+	<title>Menú | Pizzería La Foccacia</title>
+	<script defer type="module" src="/src/main.js"></script>
+	<link rel="stylesheet" href="./src/index.css" />
+</head>
+
+<body class="bg-background transition-colors duration-300 flex flex-col min-h-screen">
+
+
+	<header
+		class="relative pt-10 overflow-auto text-white bg-hero bg-cover bg-center before:content-[''] before:bg-red-950/70 before:w-full before:h-full before:block before:absolute before:z-0 before:top-0">
+		<div class="relative z-10 w-11/12 mx-auto max-w-7xl">
+			<!-- Menú de navegación -->
+			<!-- Menú de navegación -->
+			<app-navbar></app-navbar>
+
+			<div class="my-10 text-center animate-fade-in">
+				<h1 class="font-title text-5xl">Menú</h1>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menú Categorías Sticky -->
+	<!-- Menú Categorías Sticky (Floating Capsule Design) -->
+	<nav class="sticky top-4 z-40 flex justify-center py-2 transition-all duration-300 pointer-events-none"
+		aria-label="Filtros del menú">
+		<div
+			class="glass-panel pointer-events-auto flex items-center gap-1 p-1.5 rounded-full shadow-2xl bg-white/70 dark:bg-black/60 backdrop-blur-xl border border-white/40 dark:border-white/10 mx-auto max-w-[95vw] overflow-x-auto no-scrollbar">
+			<button data-filter="all"
+				class="filter-btn active flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white whitespace-nowrap [&.active]:bg-gradient-to-r [&.active]:from-primary [&.active]:to-primary-light [&.active]:text-white [&.active]:shadow-lg [&.active]:shadow-primary/25">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="3" y="3" width="7" height="7"></rect>
+					<rect x="14" y="3" width="7" height="7"></rect>
+					<rect x="14" y="14" width="7" height="7"></rect>
+					<rect x="3" y="14" width="7" height="7"></rect>
+				</svg>
+				Todos
+			</button>
+			<div class="w-px h-6 bg-gray-200 dark:bg-white/10 mx-1"></div>
+			<button data-filter="pizzas"
+				class="filter-btn flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white whitespace-nowrap [&.active]:bg-gradient-to-r [&.active]:from-primary [&.active]:to-primary-light [&.active]:text-white [&.active]:shadow-lg [&.active]:shadow-primary/25">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M15 21l-3-6 3 6zM5 21l3-6-3 6z"></path>
+					<path d="M11 21l1-6-1 6zM9 21l-1-6 1 6z"></path>
+					<path d="M21 21l-3-6 3 6z"></path>
+					<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"></path>
+				</svg>
+				Pizzas
+			</button>
+			<button data-filter="hamburguesas"
+				class="filter-btn flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white whitespace-nowrap [&.active]:bg-gradient-to-r [&.active]:from-primary [&.active]:to-primary-light [&.active]:text-white [&.active]:shadow-lg [&.active]:shadow-primary/25">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M3 6h18M5 6v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6"></path>
+					<path d="M12 6V4a2 2 0 0 0-2-2h-3"></path>
+				</svg>
+				Hamburguesas
+			</button>
+			<button data-filter="bebidas"
+				class="filter-btn flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white whitespace-nowrap [&.active]:bg-gradient-to-r [&.active]:from-primary [&.active]:to-primary-light [&.active]:text-white [&.active]:shadow-lg [&.active]:shadow-primary/25">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M17 10V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5"></path>
+					<path d="M5 10v7a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-7"></path>
+					<path d="M8 21h8"></path>
+				</svg>
+				Bebidas
+			</button>
+		</div>
+	</nav>
+
+	<main class="mt-12">
+		<section class="w-11/12 max-w-7xl mx-auto mb-20 mt-0" id="pizzas">
+			<!-- Encabezado -->
+			<div class="mb-14 text-center">
+				<h2 class="mb-4 font-title text-5xl font-bold text-primary">Pizzas</h2>
+				<p class="text-lg text-black">Algunas de nuestras mejores pizzas</p>
+			</div>
+
+			<!-- Grid -->
+			<!-- Dynamic Content Container -->
+			<div id="pizzas-grid" class="grid grid-cols-2 md:grid-cols-4 gap-5 min-h-[300px]">
+				<!-- Skeleton loader will appear here -->
+			</div>
+		</section>
+
+		<section class="w-11/12 max-w-7xl mx-auto mb-20 mt-0" id="hamburguesas">
+			<div class="mb-14 text-center">
+				<h2 class="mb-4 font-title text-5xl font-bold text-primary">Hamburguesas</h2>
+				<p class="text-lg text-black">Deliciosas hamburguesas preparadas con carne premium</p>
+			</div>
+
+			<!-- Dynamic Content Container -->
+			<div id="hamburguesas-grid" class="grid grid-cols-2 md:grid-cols-4 gap-5 min-h-[300px]">
+				<!-- Skeleton loader will appear here -->
+			</div>
+		</section>
+
+		<section class="w-11/12 max-w-7xl mx-auto mb-20 mt-0" id="bebidas">
+			<div class="mb-14 text-center">
+				<h2 class="mb-4 font-title text-5xl font-bold text-primary">Bebidas</h2>
+				<p class="text-lg text-black">Refrescantes bebidas para acompañar tu comida</p>
+			</div>
+
+			<!-- Dynamic Content Container -->
+			<div id="bebidas-grid" class="grid grid-cols-2 md:grid-cols-4 gap-5 min-h-[300px]">
+				<!-- Skeleton loader will appear here -->
+			</div>
+		</section>
+	</main>
+
+	<footer class="bg-primary pt-16 pb-8 text-white mt-auto">
+		<div class="w-11/12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+			<div>
+				<h3 class="font-title text-3xl mb-4">La Foccacia</h3>
+				<p class="opacity-80">Pizzas artesanales hechas con amor y los mejores ingredientes desde 1995.</p>
+			</div>
+			<div>
+				<h4 class="font-bold text-xl mb-4">Enlaces Rápidos</h4>
+				<ul class="space-y-2 opacity-80">
+					<li><a href="menu.html" class="hover:text-accent transition">Menú Completo</a></li>
+					<li><a href="index.html#sucursales" class="hover:text-accent transition">Nuestras Sucursales</a>
+					</li>
+					<li><a href="contacto.html" class="hover:text-accent transition">Contacto</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4 class="font-bold text-xl mb-4">Síguenos</h4>
+				<div class="flex gap-4">
+					<a href="#"
+						class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"
+						aria-label="Facebook">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+						</svg>
+					</a>
+					<a href="#"
+						class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition"
+						aria-label="Instagram">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="text-center pt-8 border-t border-white/10 text-sm opacity-60">
+			<p>© 2026 Pizzería La Foccacia - Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<!-- Product Modal -->
+	<div id="product-modal" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300"
+		aria-hidden="true">
+		<!-- Backdrop -->
+		<div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+
+		<!-- Modal Content -->
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300"
+			id="modal-panel">
+			<button id="close-modal" aria-label="Cerrar modal"
+				class="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center transition backdrop-blur-md">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+
+			<div class="grid md:grid-cols-2">
+				<!-- Image Section -->
+				<div class="h-64 md:h-full bg-gray-100 relative">
+					<img id="modal-image" src="" alt="" class="w-full h-full object-cover" />
+					<div
+						class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-6 md:hidden">
+						<h3 id="modal-title-mobile" class="font-title text-3xl font-bold text-white"></h3>
+					</div>
+				</div>
+
+				<!-- Info Section -->
+				<div class="p-8 md:p-10 flex flex-col h-full bg-gray-50">
+					<h3 id="modal-title" class="hidden md:block font-title text-4xl font-bold text-primary mb-2"></h3>
+					<p class="text-black mb-6 italic">Ingredientes frescos y masa artesanal.</p>
+
+					<!-- Prices List -->
+					<div class="space-y-3 mb-8 flex-grow" id="modal-prices">
+						<!-- Prices injected by JS -->
+					</div>
+
+					<!-- Call to Action -->
+					<div class="mt-auto">
+						<button id="modal-add-btn"
+							class="btn-premium w-full flex items-center justify-center gap-2 group">
+							<span>Ordenar por WhatsApp</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round" class="group-hover:translate-x-1 transition">
+								<path
+									d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+								</path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Floating Cart Button -->
+	<button id="cart-btn" aria-label="Abrir carrito de compras"
+		class="fixed bottom-6 right-6 z-40 bg-accent hover:bg-accent-hover text-white w-16 h-16 rounded-full shadow-glow flex items-center justify-center transition-transform hover:scale-110 group">
+		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="9" cy="21" r="1"></circle>
+			<circle cx="20" cy="21" r="1"></circle>
+			<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+		</svg>
+		<span id="cart-count"
+			class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center transform scale-0 transition-transform duration-300">0</span>
+	</button>
+
+	<!-- Cart Drawer -->
+	<div id="cart-drawer" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+		<!-- Backdrop -->
+		<div class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+			id="cart-backdrop"></div>
+
+		<!-- Drawer Panel -->
+		<div class="absolute top-0 right-0 h-full w-full max-w-md bg-white dark:bg-surface shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col"
+			id="cart-panel">
+			<!-- Header -->
+			<div
+				class="p-5 border-b border-gray-100 dark:border-white/5 flex justify-between items-center bg-primary text-white">
+				<h2 class="font-title text-2xl font-bold">Tu Pedido</h2>
+				<button id="close-cart" class="text-white/80 hover:text-white transition">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+			</div>
+
+			<!-- Items -->
+			<div class="flex-grow overflow-y-auto p-5 space-y-4" id="cart-items">
+				<!-- Empty State -->
+				<div class="h-full flex flex-col items-center justify-center text-center opacity-50">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+						class="mb-4">
+						<circle cx="9" cy="21" r="1"></circle>
+						<circle cx="20" cy="21" r="1"></circle>
+						<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+					</svg>
+					<p>Tu carrito está vacío</p>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div class="p-5 border-t border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-surface-muted">
+				<div class="flex justify-between items-center mb-4 text-xl font-bold text-primary">
+					<span>Total</span>
+					<span id="cart-total">$0.00</span>
+				</div>
+				<button id="checkout-btn" class="btn-premium w-full flex items-center justify-center gap-2">
+					<span>Pedir por WhatsApp</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path
+							d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+						</path>
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

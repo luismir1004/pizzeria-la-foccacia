@@ -1,0 +1,9 @@
+# robots.txt - Pizzería La Foccacia
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow admin or private directories (if any in future)
+# Disallow: /admin/

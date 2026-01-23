@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+	/* Fuentes Premium */
+	--font-title: 'Playfair Display', serif;
+	--font-sans: 'Lato', sans-serif;
+
+	/* Paleta: Classic Professional (Rosso & Oro) */
+	--color-primary: #BE1E2D;
+	--color-primary-light: #D9404C;
+	--color-primary-dark: #8A101C;
+
+	--color-accent: #F59E0B;
+	--color-accent-hover: #D97706;
+	--color-accent-soft: rgba(245, 158, 11, 0.15);
+
+	--color-background: #FAFAFA;
+	--color-surface: #FFFFFF;
+	--color-surface-muted: #F3F4F6;
+
+	--color-text: #1A120B;
+	--color-text-muted: #5D4037;
+	--color-text-light: #FDFBF7;
+
+	/* Sombras */
+	--shadow-soft: 0 4px 20px -2px rgba(190, 30, 45, 0.08);
+	--shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+	--shadow-card-hover: 0 20px 40px -5px rgba(190, 30, 45, 0.15);
+	--shadow-glow: 0 0 25px rgba(245, 158, 11, 0.3);
+}
+
+/* Base Styles & Textura */
+body {
+	background-color: var(--color-background);
+	color: var(--color-text);
+	/* Patrón de puntos artesanales muy sutil */
+	background-image: radial-gradient(var(--color-primary-light) 0.5px, transparent 0.5px);
+	background-size: 24px 24px;
+	opacity: 1;
+}
+
+/* Utility Classes */
+.glass-panel {
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-gradient {
+	background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* ==================== ANIMACIONES ==================== */
+
+/* Animación fade-in */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Animación slide-up */
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Animación scale */
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Animación para el menú hamburguesa */
+@keyframes menuSlideIn {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+/* Clases de animación */
+.animate-fade-in {
+	animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+	animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+	animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Delay de animaciones escalonadas */
+.delay-100 {
+	animation-delay: 100ms;
+}
+
+.delay-200 {
+	animation-delay: 200ms;
+}
+
+.delay-300 {
+	animation-delay: 300ms;
+}
+
+.delay-400 {
+	animation-delay: 400ms;
+}
+
+/* ==================== COMPONENTES PREMIUM ==================== */
+
+/* Tarjetas */
+.card-hover {
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	border-radius: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.card-hover:hover {
+	transform: translateY(-8px);
+	box-shadow: var(--shadow-card-hover);
+	border-color: rgba(212, 163, 115, 0.3);
+}
+
+.img-zoom {
+	overflow: hidden;
+	border-radius: 1rem 1rem 0 0;
+}
+
+.img-zoom img {
+	transition: transform 0.7s ease;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card-hover:hover .img-zoom img {
+	transform: scale(1.1);
+}
+
+/* Botones */
+.btn-premium {
+	background: var(--color-primary);
+	color: white;
+	padding: 0.75rem 2rem;
+	border-radius: 9999px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 6px -1px rgba(62, 39, 35, 0.2);
+	border: 1px solid transparent;
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.btn-premium:hover {
+	background: var(--color-primary-light);
+	transform: translateY(-2px);
+	box-shadow: 0 10px 15px -3px rgba(62, 39, 35, 0.3);
+}
+
+.btn-premium:active {
+	transform: translateY(0);
+}
+
+.btn-outline {
+	background: transparent;
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(4px);
+	display: inline-block;
+}
+
+.btn-outline:hover {
+	background: white;
+	color: var(--color-primary);
+	border-color: white;
+}
+
+/* Botones con efecto pulse */
+.btn-pulse {
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.btn-pulse::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transform: translateX(-100%);
+	transition: transform 0.5s ease;
+}
+
+.btn-pulse:hover::after {
+	transform: translateX(100%);
+}
+
+/* Imágenes con zoom suave */
+.img-zoom {
+	overflow: hidden;
+}
+
+.img-zoom img {
+	transition: transform 0.5s ease;
+}
+
+.img-zoom:hover img {
+	transform: scale(1.08);
+}
+
+/* ==================== MENÚ MÓVIL ==================== */
+
+/* Botón hamburguesa */
+.hamburger {
+	width: 30px;
+	height: 24px;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.hamburger span {
+	display: block;
+	height: 3px;
+	width: 100%;
+	background: currentColor;
+	border-radius: 3px;
+	transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+	transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+	opacity: 0;
+	transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	z-index: 40;
+}
+
+.mobile-menu-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Mobile menu drawer */
+.mobile-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 280px;
+	height: 100vh;
+	background: var(--color-surface);
+	transform: translateX(100%);
+	transition: transform 0.3s ease;
+	z-index: 50;
+	padding: 2rem;
+	box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+	transform: translateX(0);
+}
+
+/* ==================== DARK MODE ==================== */
+
+.dark {
+	--color-background: #120C0A;
+	/* Café casi negro */
+	--color-surface: #1F1613;
+	/* Trufa oscuro */
+	--color-surface-muted: #2A1D1A;
+
+	--color-text: #F3E8DE;
+	/* Crema claro */
+	--color-text-muted: #D4B499;
+	/* Café con leche */
+
+	--color-primary: #8D6E63;
+	/* Cacao suave */
+	--color-primary-light: #A1887F;
+
+	--color-accent: #C5A059;
+	/* Mismo oro */
+	--color-accent-hover: #D4B473;
+
+	--shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+	--shadow-card: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
+}
+
+.dark body {
+	background-color: var(--color-background);
+	color: var(--color-text);
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+	width: 50px;
+	height: 26px;
+	background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
+	border-radius: 13px;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.theme-toggle::before {
+	content: '🌙';
+	position: absolute;
+	left: 3px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	background: white;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	transition: all 0.3s ease;
+}
+
+.dark .theme-toggle::before {
+	content: '☀️';
+	left: calc(100% - 23px);
+}
+
+/* ==================== UTILIDADES DE ACCESIBILIDAD ==================== */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Focus visible mejorado */
+:focus-visible {
+	outline: 3px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Respeto por preferencias de usuario */
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* Smooth scroll */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+/* ==================== EFECTOS ESPECIALES ==================== */
+
+/* Glassmorphism */
+.glass {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Glow effect */
+.glow-primary {
+	box-shadow: 0 0 20px rgba(62, 39, 35, 0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+	background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* ==================== SKELETON LOADERS ==================== */
+
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.skeleton {
+	background: linear-gradient(90deg,
+			var(--color-surface-muted) 25%,
+			var(--color-surface) 50%,
+			var(--color-surface-muted) 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 0.5rem;
+}
+
+.skeleton-card {
+	background: var(--color-surface);
+	border-radius: 1rem;
+	overflow: hidden;
+	box-shadow: var(--shadow-soft);
+}
+
+.skeleton-image {
+	aspect-ratio: 1;
+	background: linear-gradient(90deg,
+			#e0e0e0 25%,
+			#f0f0f0 50%,
+			#e0e0e0 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+}
+
+.skeleton-text {
+	height: 1rem;
+	background: linear-gradient(90deg,
+			#e0e0e0 25%,
+			#f0f0f0 50%,
+			#e0e0e0 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 0.25rem;
+}
+
+.skeleton-text-lg {
+	height: 1.5rem;
+}
+
+.dark .skeleton,
+.dark .skeleton-image,
+.dark .skeleton-text {
+	background: linear-gradient(90deg,
+			#2a2a2a 25%,
+			#3a3a3a 50%,
+			#2a2a2a 75%);
+	background-size: 200% 100%;
+}
+
+/* ==================== IMAGE OPTIMIZATION ==================== */
+
+/* Blur-up effect for lazy loaded images */
+img[loading="lazy"] {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"].loaded,
+img.loaded {
+	opacity: 1;
+}
+
+/* Placeholder blur effect */
+.img-placeholder {
+	position: relative;
+	overflow: hidden;
+	background: var(--color-surface-muted);
+}
+
+.img-placeholder::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg,
+			transparent,
+			rgba(255, 255, 255, 0.4),
+			transparent);
+	animation: shimmer 1.5s infinite;
+}
