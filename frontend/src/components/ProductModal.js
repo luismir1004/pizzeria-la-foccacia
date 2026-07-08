@@ -20,6 +20,7 @@ export class ProductModal {
         this.pricesContainer = document.getElementById('modal-prices');
 
         this.addBtn = document.getElementById('modal-add-btn');
+        this.addBtnLabel = this.addBtn?.querySelector('span');
         this.selectedPrice = null;
         this.selectedExtras = new Set();
         this.currentProduct = null;
@@ -37,6 +38,17 @@ export class ProductModal {
         document.addEventListener('click', (e) => {
             const card = e.target.closest('[data-product-id]');
             if (card) {
+                const product = getLocalProductById(card.dataset.productId);
+                if (product) this.open(product, card);
+            }
+        });
+
+        // Accesibilidad: abrir con Enter / Espacio cuando la tarjeta tiene foco.
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const card = e.target.closest('[data-product-id]');
+            if (card) {
+                e.preventDefault();
                 const product = getLocalProductById(card.dataset.productId);
                 if (product) this.open(product, card);
             }
@@ -152,6 +164,7 @@ export class ProductModal {
         row.querySelector('.radio-indicator').classList.add('border-primary');
         row.querySelector('.radio-indicator > div').classList.remove('opacity-0');
         this.selectedPrice = item;
+        this.updateTotal();
     }
 
     renderExtras(product) {
@@ -197,12 +210,25 @@ export class ProductModal {
                     icon.classList.remove('opacity-0');
                     row.setAttribute('aria-pressed', 'true');
                 }
+                this.updateTotal();
             });
 
             grid.appendChild(row);
         });
 
         this.pricesContainer.appendChild(grid);
+    }
+
+    /** Refleja el precio final (tamaño + extras) en la etiqueta del botón. */
+    updateTotal() {
+        if (!this.addBtnLabel) return;
+        if (!this.selectedPrice) {
+            this.addBtnLabel.innerText = 'Agregar al Pedido';
+            return;
+        }
+        let total = this.selectedPrice.price;
+        this.selectedExtras.forEach((ex) => (total += ex.price));
+        this.addBtnLabel.innerText = `Agregar · $${total.toFixed(2)}`;
     }
 
     trapFocus(e) {

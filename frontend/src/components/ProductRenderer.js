@@ -67,11 +67,18 @@ export class ProductRenderer {
     const webp = product.image;
     const fallback = webp.replace(/\.webp$/, '.png');
 
+    const badge = product.featured
+      ? `<span class="absolute top-3 left-3 z-10 bg-primary text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-soft">Popular</span>`
+      : '';
+
     return `
-      <div class="group bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+      <div class="group bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
            data-product-id="${product.id}"
-           data-category="${product.category}">
+           data-category="${product.category}"
+           role="button" tabindex="0"
+           aria-label="Ver ${product.name} y agregar al pedido">
         <div class="aspect-square overflow-hidden relative">
+          ${badge}
           <picture>
             <source srcset="${webp}" type="image/webp" />
             <img class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -79,7 +86,9 @@ export class ProductRenderer {
                  alt="${product.alt ?? product.name}"
                  loading="lazy" width="400" height="400" />
           </picture>
-          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+            <span class="text-white text-sm font-semibold tracking-wide translate-y-2 group-hover:translate-y-0 transition-transform">Personalizar →</span>
+          </div>
         </div>
         <div class="p-5">
           <h3 class="text-center text-2xl font-title font-bold text-primary mb-4">${product.name}</h3>
