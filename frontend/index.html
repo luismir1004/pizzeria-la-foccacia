@@ -9,6 +9,7 @@
 	<meta name="keywords" content="pizzería, pizza artesanal, La Foccacia, restaurante, comida italiana, Jacksonville" />
 	<meta name="author" content="Pizzería La Foccacia" />
 	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href="https://pizzeria-la-foccacia.vercel.app/" />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="restaurant" />
@@ -67,6 +68,8 @@
 </head>
 
 <body class="bg-background">
+	<a href="#contenido"
+		class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-3 focus:left-3 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Saltar al contenido</a>
 	<header class="relative text-white bg-hero overflow-hidden">
 		<div class="relative z-10 w-11/12 mx-auto max-w-7xl pt-8">
 			<app-navbar></app-navbar>
@@ -127,7 +130,7 @@
 		</div>
 	</header>
 
-	<main>
+	<main id="contenido">
 		<!-- La casa -->
 		<section id="la-casa" aria-labelledby="la-casa-titulo" class="w-11/12 max-w-7xl mx-auto py-20 lg:py-28">
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

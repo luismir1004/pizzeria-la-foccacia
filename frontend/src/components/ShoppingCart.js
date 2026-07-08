@@ -46,7 +46,7 @@ export class ShoppingCart {
 
         document.addEventListener('add-to-cart', (e) => {
             this.addItem(e.detail);
-            this.open();
+            this.showToast(`${e.detail.title} añadido al pedido`);
         });
 
         // Delegación de +/- y borrar dentro del carrito.
@@ -61,6 +61,40 @@ export class ShoppingCart {
         });
 
         this.updateUI();
+    }
+
+    /** Confirmación breve y accesible al agregar, con acceso directo al carrito. */
+    showToast(msg) {
+        let toast = document.getElementById('cart-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'cart-toast';
+            toast.setAttribute('role', 'status');
+            toast.setAttribute('aria-live', 'polite');
+            toast.className =
+                'fixed z-[60] bottom-24 right-6 max-w-xs bg-primary text-white px-4 py-3 rounded-xl shadow-glow ' +
+                'flex items-center gap-3 translate-y-3 opacity-0 transition-all duration-300 pointer-events-auto';
+            document.body.appendChild(toast);
+        }
+        toast.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span class="text-sm font-semibold flex-grow">${msg}</span>
+            <button type="button" class="text-white/80 hover:text-white text-sm underline shrink-0" data-toast-open>Ver</button>`;
+        toast.querySelector('[data-toast-open]')?.addEventListener('click', () => {
+            this.hideToast();
+            this.open();
+        });
+
+        requestAnimationFrame(() => {
+            toast.classList.remove('translate-y-3', 'opacity-0');
+        });
+        clearTimeout(this._toastTimer);
+        this._toastTimer = setTimeout(() => this.hideToast(), 3200);
+    }
+
+    hideToast() {
+        const toast = document.getElementById('cart-toast');
+        if (toast) toast.classList.add('translate-y-3', 'opacity-0');
     }
 
     open() {

@@ -108,6 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
     new ShoppingCart();
     new ImageOptimizer();
 
+    // Formulario de contacto y badge de horario (solo en contacto.html)
+    if (document.getElementById('contact-form')) {
+        import('./components/ContactForm.js').then(({ ContactForm, renderOpenNow }) => {
+            new ContactForm();
+            renderOpenNow();
+        });
+    }
+
     // Grid de destacados en la home
     if (document.getElementById('featured-grid')) {
         import('./components/ProductRenderer.js').then(({ ProductRenderer }) => {

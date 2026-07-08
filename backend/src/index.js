@@ -56,6 +56,18 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
+// Contacto (recibe el formulario del sitio; aquí solo valida y registra)
+app.post('/api/contact', (req, res) => {
+  const { nombre, email, mensaje } = req.body || {};
+  const emailOk = typeof email === 'string' && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+  if (!nombre || !emailOk || !mensaje || String(mensaje).trim().length < 10) {
+    return res.status(422).json({ error: 'Datos de contacto inválidos' });
+  }
+  // En producción: enviar email (Resend/SES) o almacenar. Por ahora, registrar.
+  console.log(`[contact] ${nombre} <${email}>: ${String(mensaje).slice(0, 200)}`);
+  res.status(201).json({ ok: true });
+});
+
 // Producto individual
 app.get('/api/products/:id', async (req, res) => {
   try {

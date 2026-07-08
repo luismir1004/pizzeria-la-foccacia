@@ -11,6 +11,19 @@ export const SITE = {
   phone: '+1 (904) 555-0142',
   email: 'contacto@lafoccacia.com',
 
+  // Redes sociales (dejar '' oculta el icono en lugar de enlazar a "#")
+  social: {
+    facebook: 'https://www.facebook.com/lafoccacia',
+    instagram: 'https://www.instagram.com/lafoccacia',
+  },
+
+  // Horario (0 = domingo … 6 = sábado). Usado por el badge "Abierto ahora".
+  hours: { openHour: 11, closeHour: 23, days: [0, 1, 2, 3, 4, 5, 6] },
+
+  // Endpoint del formulario de contacto. Si queda '', el formulario cae a
+  // WhatsApp/mailto en vez de fallar silenciosamente.
+  contactEndpoint: import.meta.env?.VITE_CONTACT_ENDPOINT || '',
+
   // Backend. Se puede sobrescribir en build con VITE_API_URL.
   // Si queda vacío, el frontend usa el catálogo local (products.json).
   apiUrl: import.meta.env?.VITE_API_URL || '',

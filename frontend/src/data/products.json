@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "lastUpdated": "2026-01-22",
+    "lastUpdated": "2026-07-08",
     "categories": [
         {
             "id": "pizzas",
@@ -49,19 +49,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 129
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 169
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 239
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 329
                 }
             ]
         },
@@ -96,19 +96,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 119
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 159
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 225
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 315
                 }
             ]
         },
@@ -143,19 +143,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 115
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 155
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 219
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 309
                 }
             ]
         },
@@ -190,19 +190,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 139
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 179
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 249
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 345
                 }
             ]
         },
@@ -237,19 +237,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 125
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 165
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 235
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 325
                 }
             ]
         },
@@ -283,19 +283,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 149
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 189
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 259
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 355
                 }
             ]
         },
@@ -329,19 +329,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 135
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 175
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 245
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 339
                 }
             ]
         },
@@ -371,19 +371,19 @@
             "prices": [
                 {
                     "size": "Pequeña",
-                    "price": 123.00
+                    "price": 155
                 },
                 {
                     "size": "Mediana",
-                    "price": 153.00
+                    "price": 195
                 },
                 {
                     "size": "Grande",
-                    "price": 223.00
+                    "price": 265
                 },
                 {
                     "size": "Familiar",
-                    "price": 323.00
+                    "price": 359
                 }
             ]
         },
@@ -418,11 +418,11 @@
             "prices": [
                 {
                     "size": "Normal",
-                    "price": 123.00
+                    "price": 99
                 },
                 {
                     "size": "Carne doble",
-                    "price": 153.00
+                    "price": 139
                 }
             ]
         },
@@ -452,11 +452,11 @@
             "prices": [
                 {
                     "size": "Normal",
-                    "price": 123.00
+                    "price": 105
                 },
                 {
                     "size": "Carne doble",
-                    "price": 153.00
+                    "price": 145
                 }
             ]
         },
@@ -486,11 +486,11 @@
             "prices": [
                 {
                     "size": "Normal",
-                    "price": 123.00
+                    "price": 95
                 },
                 {
                     "size": "Extra queso",
-                    "price": 153.00
+                    "price": 129
                 }
             ]
         },
@@ -520,11 +520,11 @@
             "prices": [
                 {
                     "size": "Normal",
-                    "price": 123.00
+                    "price": 159
                 },
                 {
                     "size": "Carne doble",
-                    "price": 153.00
+                    "price": 199
                 }
             ]
         },
@@ -548,7 +548,7 @@
             "prices": [
                 {
                     "size": "500ml",
-                    "price": 35.00
+                    "price": 35
                 }
             ]
         },
@@ -572,7 +572,7 @@
             "prices": [
                 {
                     "size": "500ml",
-                    "price": 45.00
+                    "price": 45
                 }
             ]
         },
@@ -596,7 +596,7 @@
             "prices": [
                 {
                     "size": "500ml",
-                    "price": 25.00
+                    "price": 25
                 }
             ]
         },
@@ -616,7 +616,7 @@
             "prices": [
                 {
                     "size": "500ml",
-                    "price": 55.00
+                    "price": 55
                 }
             ]
         }
