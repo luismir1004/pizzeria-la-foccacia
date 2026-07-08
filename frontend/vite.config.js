@@ -13,8 +13,8 @@ export default defineConfig({
                 name: 'Pizzería La Foccacia',
                 short_name: 'La Foccacia',
                 description: 'Auténtica Pizza Artesanal y Cocina Italiana',
-                theme_color: '#BE1E2D',
-                background_color: '#FAFAFA',
+                theme_color: '#C4562A',
+                background_color: '#EFEDE8',
                 display: 'standalone',
                 orientation: 'portrait',
                 icons: [

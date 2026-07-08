@@ -6,38 +6,53 @@
 	--font-title: 'Playfair Display', serif;
 	--font-sans: 'Lato', sans-serif;
 
-	/* Paleta: Classic Professional (Rosso & Oro) */
-	--color-primary: #BE1E2D;
-	--color-primary-light: #D9404C;
-	--color-primary-dark: #8A101C;
+	/* Paleta: "Horno & Harina" — artesanal, cálida, editorial.
+	   Marca = ember (terracota de horno). Acento de apoyo = olivo. */
+	--color-primary: #C4562A;
+	--color-primary-light: #D96F3E;
+	--color-primary-dark: #9E3F1B;
 
-	--color-accent: #F59E0B;
-	--color-accent-hover: #D97706;
-	--color-accent-soft: rgba(245, 158, 11, 0.15);
+	--color-accent: #5E7346;
+	--color-accent-hover: #4C5E38;
+	--color-accent-soft: rgba(94, 115, 70, 0.15);
 
-	--color-background: #FAFAFA;
-	--color-surface: #FFFFFF;
-	--color-surface-muted: #F3F4F6;
+	/* Harina / hueso */
+	--color-background: #EFEDE8;
+	--color-surface: #F8F5EF;
+	--color-surface-muted: #E7E2D7;
 
-	--color-text: #1A120B;
-	--color-text-muted: #5D4037;
-	--color-text-light: #FDFBF7;
+	/* Carbón / brasa apagada */
+	--color-text: #1C1815;
+	--color-text-muted: #6B5D4F;
+	--color-text-light: #FBF7F0;
 
-	/* Sombras */
-	--shadow-soft: 0 4px 20px -2px rgba(190, 30, 45, 0.08);
-	--shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-	--shadow-card-hover: 0 20px 40px -5px rgba(190, 30, 45, 0.15);
-	--shadow-glow: 0 0 25px rgba(245, 158, 11, 0.3);
+	/* Espresso para paneles oscuros del hero */
+	--color-ember-deep: #2A1912;
+
+	/* Sombras cálidas */
+	--shadow-soft: 0 4px 20px -2px rgba(42, 25, 18, 0.08);
+	--shadow-card: 0 10px 30px -8px rgba(42, 25, 18, 0.14);
+	--shadow-card-hover: 0 22px 44px -12px rgba(158, 63, 27, 0.28);
+	--shadow-glow: 0 0 25px rgba(196, 86, 42, 0.28);
 }
 
 /* Base Styles & Textura */
 body {
 	background-color: var(--color-background);
 	color: var(--color-text);
-	/* Patrón de puntos artesanales muy sutil */
-	background-image: radial-gradient(var(--color-primary-light) 0.5px, transparent 0.5px);
-	background-size: 24px 24px;
+	/* Patrón de "harina espolvoreada" muy sutil */
+	background-image: radial-gradient(rgba(158, 63, 27, 0.10) 0.6px, transparent 0.6px);
+	background-size: 22px 22px;
 	opacity: 1;
+}
+
+/* Hero: panel cálido de horno (antes dependía de una utilidad bg-hero inexistente) */
+.bg-hero {
+	background-color: var(--color-ember-deep);
+	background-image:
+		radial-gradient(120% 100% at 15% 0%, rgba(196, 86, 42, 0.55) 0%, transparent 55%),
+		radial-gradient(120% 120% at 100% 20%, rgba(158, 63, 27, 0.45) 0%, transparent 50%),
+		linear-gradient(160deg, #3A2115 0%, #22140D 100%);
 }
 
 /* Utility Classes */
@@ -302,27 +317,33 @@ body {
 /* ==================== DARK MODE ==================== */
 
 .dark {
-	--color-background: #120C0A;
-	/* Café casi negro */
-	--color-surface: #1F1613;
-	/* Trufa oscuro */
-	--color-surface-muted: #2A1D1A;
+	/* Espresso oscuro */
+	--color-background: #171310;
+	--color-surface: #221A15;
+	--color-surface-muted: #2C221B;
 
-	--color-text: #F3E8DE;
-	/* Crema claro */
-	--color-text-muted: #D4B499;
-	/* Café con leche */
+	/* Bone / harina clara */
+	--color-text: #EFE7DC;
+	--color-text-muted: #B8A992;
 
-	--color-primary: #8D6E63;
-	/* Cacao suave */
-	--color-primary-light: #A1887F;
+	/* Ember aclarado para contraste sobre fondo oscuro */
+	--color-primary: #E07E4E;
+	--color-primary-light: #EB9367;
+	--color-primary-dark: #C4562A;
 
-	--color-accent: #C5A059;
-	/* Mismo oro */
-	--color-accent-hover: #D4B473;
+	/* Olivo aclarado */
+	--color-accent: #93A96E;
+	--color-accent-hover: #A6BA83;
+	--color-accent-soft: rgba(147, 169, 110, 0.18);
 
 	--shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-	--shadow-card: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
+	--shadow-card: 0 10px 24px -6px rgba(0, 0, 0, 0.65);
+	--shadow-card-hover: 0 22px 44px -12px rgba(0, 0, 0, 0.7);
+	--shadow-glow: 0 0 25px rgba(224, 126, 78, 0.3);
+}
+
+.dark body {
+	background-image: radial-gradient(rgba(224, 126, 78, 0.08) 0.6px, transparent 0.6px);
 }
 
 .dark body {
