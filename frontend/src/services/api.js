@@ -9,17 +9,9 @@
  */
 import productsData from '../data/products.json';
 import { SITE } from '../config.js';
+import { normalizeProduct, filterProducts } from '../lib/catalog.js';
 
 const LOCAL = productsData;
-
-/** Normaliza las rutas de imagen del JSON ("./img/..") a rutas absolutas ("/img/.."). */
-function normalizeImage(path) {
-  return typeof path === 'string' ? path.replace(/^\.\//, '/') : path;
-}
-
-function normalizeProduct(p) {
-  return { ...p, image: normalizeImage(p.image) };
-}
 
 async function fetchJson(pathname) {
   const res = await fetch(`${SITE.apiUrl}${pathname}`, {
@@ -49,10 +41,7 @@ export async function getProducts(opts = {}) {
     }
   }
 
-  let list = LOCAL.products;
-  if (category) list = list.filter((p) => p.category === category);
-  if (featured) list = list.filter((p) => p.featured);
-  return list.map(normalizeProduct);
+  return filterProducts(LOCAL.products, { category, featured });
 }
 
 /** Devuelve las categorías del catálogo. */

@@ -64,6 +64,20 @@ estático nunca divergen.
 - `prisma/schema.prisma` — modelos `Category`, `Product`, `Price`, `Extra`.
 - `prisma/seed.js` — carga inicial desde el JSON del frontend.
 
+## Despliegue (Render)
+
+El repositorio incluye `render.yaml` (Blueprint). En Render: **New → Blueprint**,
+apunta al repo y aplica. Se crean la base PostgreSQL y el servicio web.
+Tras el primer deploy, en la shell del servicio ejecuta una vez:
+
+```bash
+npm run migrate && npm run seed
+```
+
+Luego, en Vercel, define `VITE_API_URL` con la URL pública del servicio
+(p. ej. `https://foccacia-api.onrender.com`) para que el frontend consuma la API.
+Alternativas equivalentes: Railway o Fly.io (hay `Dockerfile`).
+
 ## Notas de seguridad
 
 Ningún secreto se versiona: las credenciales viven en `.env` (ignorado por git).

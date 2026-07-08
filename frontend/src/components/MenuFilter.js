@@ -1,62 +1,113 @@
 /**
  * MenuFilter
- * Maneja el filtrado dinámico de secciones en la página del menú.
+ * Filtrado por categoría (con scroll a la sección) y búsqueda por nombre/ingrediente.
  */
+import { getAllLocalProducts } from '../services/api.js';
+
+const norm = (s) =>
+  (s || '')
+    .toString()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+
 export class MenuFilter {
-    constructor() {
-        this.filterBtns = document.querySelectorAll('.filter-btn');
-        this.sections = {
-            pizzas: document.getElementById('pizzas'),
-            hamburguesas: document.getElementById('hamburguesas'),
-            bebidas: document.getElementById('bebidas')
-        };
+  constructor() {
+    this.filterBtns = document.querySelectorAll('.filter-btn');
+    this.sections = {
+      pizzas: document.getElementById('pizzas'),
+      hamburguesas: document.getElementById('hamburguesas'),
+      bebidas: document.getElementById('bebidas'),
+    };
+    this.searchInput = document.getElementById('menu-search');
+    this.emptyMsg = document.getElementById('search-empty');
 
-        this.init();
+    // Índice de búsqueda por id de producto (nombre + ingredientes + categoría)
+    this.index = new Map();
+    for (const p of getAllLocalProducts()) {
+      this.index.set(p.id, norm(`${p.name} ${(p.ingredients || []).join(' ')} ${p.category}`));
     }
 
-    init() {
-        if (!this.filterBtns.length) return;
+    this.init();
+  }
 
-        this.filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
-                this.applyFilter(filter);
-                this.updateActiveBtn(btn);
-            });
+  init() {
+    if (!this.filterBtns.length && !this.searchInput) return;
+
+    this.filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        if (this.searchInput) this.searchInput.value = '';
+        this.clearSearch();
+        this.applyFilter(filter);
+        this.updateActiveBtn(btn);
+        this.scrollToSection(filter);
+      });
+    });
+
+    this.searchInput?.addEventListener('input', (e) => this.applySearch(e.target.value));
+  }
+
+  applyFilter(filter) {
+    Object.entries(this.sections).forEach(([key, section]) => {
+      if (!section) return;
+      section.classList.remove('animate-fade-in');
+      const show = filter === 'all' || key === filter;
+      section.style.display = show ? 'block' : 'none';
+      if (show) {
+        requestAnimationFrame(() => {
+          section.classList.add('animate-fade-in');
+          section.style.opacity = '1';
         });
+      }
+    });
+  }
+
+  scrollToSection(filter) {
+    const target = filter === 'all' ? document.getElementById('contenido') : this.sections[filter];
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  updateActiveBtn(activeBtn) {
+    this.filterBtns.forEach((btn) => btn.classList.remove('active'));
+    activeBtn.classList.add('active');
+  }
+
+  // --- Búsqueda ---
+  applySearch(query) {
+    const q = norm(query).trim();
+    if (!q) {
+      this.clearSearch();
+      const active = document.querySelector('.filter-btn.active')?.getAttribute('data-filter') || 'all';
+      this.applyFilter(active);
+      return;
     }
 
-    applyFilter(filter) {
-        Object.entries(this.sections).forEach(([key, section]) => {
-            if (!section) return;
+    let totalVisible = 0;
+    Object.values(this.sections).forEach((section) => {
+      if (!section) return;
+      let visibleInSection = 0;
+      section.querySelectorAll('[data-product-id]').forEach((card) => {
+        const hay = this.index.get(card.dataset.productId) || norm(card.textContent);
+        const match = hay.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visibleInSection++;
+      });
+      section.style.display = visibleInSection ? 'block' : 'none';
+      totalVisible += visibleInSection;
+    });
 
-            // Reset animation classes
-            section.classList.remove('animate-fade-in', 'hidden');
+    this.emptyMsg?.classList.toggle('hidden', totalVisible > 0);
+  }
 
-            if (filter === 'all' || key === filter) {
-                // Show
-                section.style.display = 'block';
-                // Small delay to allow display block to apply before animation
-                requestAnimationFrame(() => {
-                    section.classList.add('animate-fade-in');
-                    section.style.opacity = '1';
-                });
-            } else {
-                // Hide
-                section.style.display = 'none';
-                section.style.opacity = '0';
-            }
-        });
-    }
-
-    updateActiveBtn(activeBtn) {
-        this.filterBtns.forEach(btn => {
-            btn.classList.remove('active', 'bg-primary/5', 'text-white', 'bg-primary');
-            btn.classList.add('text-primary', 'bg-transparent');
-        });
-
-        // Add active styles
-        activeBtn.classList.remove('bg-transparent', 'text-primary');
-        activeBtn.classList.add('active', 'bg-primary', 'text-white');
-    }
+  clearSearch() {
+    this.emptyMsg?.classList.add('hidden');
+    Object.values(this.sections).forEach((section) => {
+      section?.querySelectorAll('[data-product-id]').forEach((card) => {
+        card.style.display = '';
+      });
+    });
+  }
 }

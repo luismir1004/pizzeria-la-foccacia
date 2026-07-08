@@ -7,6 +7,7 @@ import { registerSW } from 'virtual:pwa-register';
 import './index.css';
 import './components/AppNavbar.js';
 import './components/AppFooter.js';
+import './components/SiteOverlays.js';
 import { MenuFilter } from './components/MenuFilter.js';
 import { ProductModal } from './components/ProductModal.js';
 import { ShoppingCart } from './components/ShoppingCart.js';
