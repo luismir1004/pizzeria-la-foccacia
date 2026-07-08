@@ -88,18 +88,8 @@ function initHeaderScroll() {
     const header = document.querySelector('header');
     if (!header) return;
 
-    let lastScroll = 0;
-
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-
-        if (currentScroll > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        lastScroll = currentScroll;
+        header.classList.toggle('scrolled', window.scrollY > 100);
     });
 }
 
@@ -118,12 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
     new ShoppingCart();
     new ImageOptimizer();
 
-    // Initialize Product Renderers for Menu Page
+    // Grid de destacados en la home
+    if (document.getElementById('featured-grid')) {
+        import('./components/ProductRenderer.js').then(({ ProductRenderer }) => {
+            new ProductRenderer('featured-grid', { featured: true }).render();
+        });
+    }
+
+    // Grids por categoría en la página del menú
     ['pizzas', 'hamburguesas', 'bebidas'].forEach(category => {
         const gridId = `${category}-grid`;
         if (document.getElementById(gridId)) {
             import('./components/ProductRenderer.js').then(({ ProductRenderer }) => {
-                new ProductRenderer(gridId, category).render();
+                new ProductRenderer(gridId, { category }).render();
             });
         }
     });

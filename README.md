@@ -2,67 +2,83 @@
 
 **Sabor Artesanal & Experiencia Digital Premium**
 
-Bienvenido al repositorio oficial de **La Foccacia**, una plataforma web moderna diseñada para una pizzería gourmet. Este proyecto destaca por su interfaz de usuario "High-End", animaciones fluidas y una experiencia de compra optimizada.
+Plataforma web para una pizzería gourmet: un frontend orientado a datos (PWA)
+y una API REST que comparten una única fuente de verdad del catálogo.
 
-## ✨ Características Principales
+## ✨ Características
 
-### 🎨 Diseño UI/UX Premium
-- **Estética "Toscana Gourmet"**: Paleta de colores elegante (Rojo Vino, Dorado, Cremas).
-- **Glassmorphism Avanzado**: Elementos de navegación y modales con efectos de cristal esmerilado (`backdrop-blur`).
-- **Navegación Intuitiva**: Menú de filtros tipo "Cápsula Flotante" con iconos SVG personalizados.
-- **Tipografía**: Combinación de *Playfair Display* (Títulos) y *Lato* (Cuerpo) para máxima legibilidad y estilo.
+### 🎨 Frontend
+- Estética "Toscana Gourmet" (Rosso & Oro) con tokens de diseño y **modo oscuro** completo.
+- **Orientado a datos**: las tarjetas de producto se generan desde el catálogo
+  (API con *fallback* automático al JSON local), sin HTML escrito a mano.
+- Carrito con **cantidades**, persistencia y checkout por WhatsApp.
+- Modal accesible (`role="dialog"`, *focus trap*, restauración de foco).
+- Imágenes `webp`+`png` con `<picture>` y *lazy loading* que no rompe sin JavaScript.
+- PWA (service worker, manifest) y SEO (Open Graph absoluto, Schema.org).
 
-### 🛠 Tecnología
-- **Frontend**: HTML5, JavaScript (ES6+ Modules), Tailwind CSS v4.
-- **Build Tool**: Vite para un rendimiento ultrarrápido.
-- **PWA Ready**: Configurado como Progressive Web App (Iconos, Manifest, Service Workers).
+### 🛠 Stack
+- **Frontend**: HTML5, JavaScript ES6, Tailwind CSS v4, Vite, vite-plugin-pwa.
+- **Backend**: Node.js, Express 5, Prisma 7, PostgreSQL.
+- **Calidad**: ESLint 9 (flat config), Prettier, tests con `node:test`, CI en GitHub Actions.
 
-## 🚀 Instalación y Desarrollo
-
-1.  **Clonar el repositorio**:
-    ```bash
-    git clone https://github.com/luismir1004/pizzeria-la-foccacia.git
-    cd pizzeria-la-foccacia/frontend
-    ```
-
-2.  **Instalar dependencias**:
-    ```bash
-    npm install
-    ```
-
-3.  **Iniciar servidor de desarrollo**:
-    ```bash
-    npm run dev
-    ```
-
-4.  **Construir para producción**:
-    ```bash
-    npm run build
-    ```
-
-## 📂 Estructura del Proyecto
+## 📂 Estructura
 
 ```
 /frontend
-  ├── /public          # Assets estáticos (Imágenes, Iconos)
-  ├── /src
-  │   ├── /components  # Componentes JS (Modal, Navbar, Renderer)
-  │   ├── /data        # JSON de productos
-  │   ├── main.js      # Punto de entrada
-  │   └── index.css    # Estilos globales y Tailwind
-  ├── index.html       # Página de Inicio
-  └── menu.html        # Menú Interactivo
+  ├── src/
+  │   ├── components/   # Navbar, Footer, Modal, Cart, Renderer, ImageOptimizer
+  │   ├── services/     # api.js  (API con fallback a JSON local)
+  │   ├── lib/          # cartMath.js  (lógica pura del carrito, testeable)
+  │   ├── data/         # products.json  ← fuente única de verdad del catálogo
+  │   ├── config.js     # datos de negocio (WhatsApp, sucursales, API URL)
+  │   └── main.js
+  ├── test/             # tests de cartMath
+  ├── index.html · menu.html · contacto.html
+/backend
+  ├── src/              # servidor Express + serialize.js
+  ├── prisma/           # schema.prisma + seed.js
+  └── test/             # tests de serialización
+/.github/workflows      # CI (lint · test · build)
 ```
 
-## 🌍 Despliegue en Vercel
+## 🚀 Desarrollo
 
-Este proyecto está optimizado para **Vercel**.
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev        # servidor de desarrollo
+npm run lint       # eslint
+npm test           # node:test
+npm run build      # build de producción
+```
 
-1. Importa este repositorio en tu dashboard de Vercel.
-2. Configura el **Root Directory** como `frontend`.
-3. El **Framework Preset** se detectará automáticamente como *Vite*.
-4. ¡Despliega!
+Configura opcionalmente `VITE_API_URL` (ver `frontend/.env.example`). Si queda
+vacío, el sitio funciona de forma autónoma con el catálogo local.
+
+### Backend
+Ver [`backend/README.md`](backend/README.md). Resumen:
+```bash
+cd backend
+cp .env.example .env         # define DATABASE_URL y contraseñas
+docker-compose up -d         # PostgreSQL + pgAdmin
+npm install && npm run generate && npm run migrate:dev && npm run seed
+npm run dev
+```
+
+## 🌍 Despliegue
+
+- **Frontend → Vercel**: Root Directory `frontend`, preset Vite autodetectado
+  (`vercel.json` en la raíz). Define `VITE_API_URL` si conectas el backend.
+- **Backend → Render / Railway / Fly.io**: provee una base PostgreSQL, define
+  `DATABASE_URL`, y ejecuta `npm run migrate && npm run seed` en el arranque.
+
+## 🔒 Datos y secretos
+
+El catálogo vive **una sola vez** en `frontend/src/data/products.json`; el
+backend lo siembra en la base de datos. Ningún secreto se versiona: las
+credenciales se leen de archivos `.env` (documentados en los `.env.example`).
 
 ---
 
-© 2026 Pizzería La Foccacia - Desarrollado con pasión.
+© 2026 Pizzería La Foccacia — Desarrollado con pasión.

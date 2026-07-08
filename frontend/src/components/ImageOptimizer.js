@@ -29,7 +29,13 @@ export class ImageOptimizer {
             );
 
             this.images.forEach(img => {
-                // Add placeholder class to parent
+                // Si ya está cargada (caché), la mostramos sin ocultarla.
+                if (img.complete && img.naturalWidth > 0) {
+                    img.classList.add('loaded');
+                    return;
+                }
+                // El fundido es opt-in: solo se oculta cuando el JS toma el control.
+                img.classList.add('lazy-img');
                 img.parentElement?.classList.add('img-placeholder');
                 observer.observe(img);
             });

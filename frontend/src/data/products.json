@@ -22,6 +22,7 @@
         {
             "id": "pizza-pepperoni",
             "category": "pizzas",
+            "featured": true,
             "name": "Pepperoni",
             "image": "./img/menu/pizza-1.webp",
             "alt": "Pizza Pepperoni con queso derretido",
@@ -67,6 +68,7 @@
         {
             "id": "pizza-napolitana",
             "category": "pizzas",
+            "featured": true,
             "name": "Napolitana",
             "image": "./img/menu/pizza-2.webp",
             "alt": "Pizza Napolitana con tomates frescos",
@@ -113,6 +115,7 @@
         {
             "id": "pizza-margherita",
             "category": "pizzas",
+            "featured": true,
             "name": "Margherita",
             "image": "./img/menu/pizza-3.webp",
             "alt": "Pizza Margherita clásica italiana",
@@ -159,6 +162,7 @@
         {
             "id": "pizza-cuatro-quesos",
             "category": "pizzas",
+            "featured": true,
             "name": "Cuatro Quesos",
             "image": "./img/menu/pizza-4.webp",
             "alt": "Pizza Cuatro Quesos con variedad de quesos",
