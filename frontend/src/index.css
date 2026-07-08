@@ -3,7 +3,7 @@
 
 @theme {
 	/* Fuentes Premium */
-	--font-title: 'Playfair Display', serif;
+	--font-title: 'Fraunces', 'Playfair Display', serif;
 	--font-sans: 'Lato', sans-serif;
 
 	/* Paleta: "Horno & Harina" — artesanal, cálida, editorial.
@@ -548,4 +548,193 @@ img.loaded {
 			rgba(255, 255, 255, 0.4),
 			transparent);
 	animation: shimmer 1.5s infinite;
+}
+/* ==================== SISTEMA EDITORIAL "HORNO & HARINA" ==================== */
+
+/* Tipografía display con óptica de Fraunces */
+.font-title {
+	font-optical-sizing: auto;
+	letter-spacing: -0.02em;
+}
+
+/* Etiqueta pequeña (eyebrow) */
+.eyebrow {
+	font-family: var(--font-sans);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: var(--color-primary);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.eyebrow::before {
+	content: "";
+	width: 28px;
+	height: 1.5px;
+	background: currentColor;
+	display: inline-block;
+}
+
+.eyebrow.centered::after {
+	content: "";
+	width: 28px;
+	height: 1.5px;
+	background: currentColor;
+	display: inline-block;
+}
+
+/* Encabezado de sección editorial */
+.section-kicker {
+	font-family: var(--font-sans);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: var(--color-primary);
+}
+
+/* Ticker / marquesina de ingredientes */
+.ticker {
+	overflow: hidden;
+	white-space: nowrap;
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker__track {
+	display: inline-flex;
+	gap: 2.5rem;
+	align-items: center;
+	animation: ticker-scroll 32s linear infinite;
+	will-change: transform;
+}
+
+.ticker__item {
+	font-family: var(--font-title);
+	font-style: italic;
+	font-size: 1.05rem;
+	opacity: 0.9;
+	display: inline-flex;
+	align-items: center;
+	gap: 2.5rem;
+}
+
+.ticker__item::after {
+	content: "◆";
+	font-style: normal;
+	font-size: 0.5rem;
+	opacity: 0.6;
+}
+
+@keyframes ticker-scroll {
+	from { transform: translateX(0); }
+	to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ticker__track { animation: none; }
+}
+
+/* Sello "desde 1995" */
+.seal {
+	width: 96px;
+	height: 96px;
+	border-radius: 50%;
+	background: var(--color-primary);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 1.05;
+	box-shadow: var(--shadow-card);
+	border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.seal .seal__big {
+	font-family: var(--font-title);
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.seal .seal__small {
+	font-family: var(--font-sans);
+	font-size: 0.5rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	margin-top: 2px;
+}
+
+/* Marcador numerado (proceso artesanal) */
+.craft-num {
+	font-family: var(--font-title);
+	font-size: 2.25rem;
+	font-weight: 500;
+	font-style: italic;
+	color: var(--color-primary);
+	line-height: 1;
+}
+
+/* Capitular (drop cap) */
+.dropcap::first-letter {
+	font-family: var(--font-title);
+	font-size: 3.4rem;
+	font-weight: 700;
+	line-height: 0.8;
+	float: left;
+	margin: 0.15em 0.12em 0 0;
+	color: var(--color-primary);
+}
+
+/* Botón sólido editorial */
+.btn-solid {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--color-primary);
+	color: #fff;
+	padding: 0.85rem 1.8rem;
+	border-radius: 9999px;
+	font-weight: 700;
+	font-size: 0.85rem;
+	letter-spacing: 0.03em;
+	transition: all 0.25s ease;
+	box-shadow: var(--shadow-soft);
+}
+
+.btn-solid:hover {
+	background: var(--color-primary-dark);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-card);
+}
+
+.btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.8rem;
+	border-radius: 9999px;
+	font-weight: 700;
+	font-size: 0.85rem;
+	letter-spacing: 0.03em;
+	color: currentColor;
+	border: 1.5px solid currentColor;
+	transition: all 0.25s ease;
+}
+
+.btn-ghost:hover {
+	background: currentColor;
+}
+
+.btn-ghost:hover span { color: var(--color-primary); }
+
+/* Regla fina decorativa */
+.hairline {
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--color-text-muted), transparent);
+	opacity: 0.35;
 }
