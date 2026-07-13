@@ -132,13 +132,23 @@ class AppNavbar extends HTMLElement {
             html.classList.add('dark');
         }
 
+        const toggles = [themeToggle, themeToggleMobile].filter(Boolean);
+        const syncA11y = () => {
+            const dark = html.classList.contains('dark');
+            toggles.forEach((t) => {
+                t.setAttribute('aria-pressed', String(dark));
+                t.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+            });
+        };
+
         const toggleTheme = () => {
             html.classList.toggle('dark');
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            syncA11y();
         };
 
-        themeToggle?.addEventListener('click', toggleTheme);
-        themeToggleMobile?.addEventListener('click', toggleTheme);
+        toggles.forEach((t) => t.addEventListener('click', toggleTheme));
+        syncA11y();
     }
 
     highlightActiveLink() {

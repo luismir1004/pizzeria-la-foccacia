@@ -2,14 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 const { serializeProduct } = require('./serialize');
+const { validateContact } = require('./validation');
+const { securityHeaders, corsOptions, rateLimit } = require('./security');
 
 const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
 
+app.set('trust proxy', 1); // detrás de proxy (Render/Vercel): IP real para rate-limit
+
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(securityHeaders);
+app.use(cors(corsOptions()));
+app.use(express.json({ limit: '8kb' })); // tope de payload
 
 // Health check
 app.get('/', (req, res) => {
@@ -56,16 +61,26 @@ app.get('/api/products', async (req, res) => {
   }
 });
 
-// Contacto (recibe el formulario del sitio; aquí solo valida y registra)
-app.post('/api/contact', (req, res) => {
-  const { nombre, email, mensaje } = req.body || {};
-  const emailOk = typeof email === 'string' && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
-  if (!nombre || !emailOk || !mensaje || String(mensaje).trim().length < 10) {
-    return res.status(422).json({ error: 'Datos de contacto inválidos' });
+// Contacto: rate-limit + validación/saneamiento + honeypot + persistencia
+app.post('/api/contact', rateLimit({ windowMs: 60_000, max: 5 }), async (req, res) => {
+  // Honeypot: si el campo oculto viene relleno, es un bot.
+  if (req.body && req.body.website) {
+    return res.status(201).json({ ok: true }); // finge éxito sin hacer nada
   }
-  // En producción: enviar email (Resend/SES) o almacenar. Por ahora, registrar.
-  console.log(`[contact] ${nombre} <${email}>: ${String(mensaje).slice(0, 200)}`);
-  res.status(201).json({ ok: true });
+
+  const result = validateContact(req.body);
+  if (!result.ok) {
+    return res.status(422).json({ error: 'Datos de contacto inválidos', fields: result.errors });
+  }
+
+  try {
+    await prisma.contactMessage.create({ data: result.data });
+    // TODO: notificar por email (Resend/SES) cuando haya credenciales.
+    res.status(201).json({ ok: true });
+  } catch (error) {
+    console.error('POST /api/contact', error);
+    res.status(500).json({ error: 'No se pudo registrar el mensaje' });
+  }
 });
 
 // Producto individual

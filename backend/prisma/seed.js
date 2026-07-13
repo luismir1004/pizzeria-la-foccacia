@@ -14,9 +14,30 @@ const DATA_PATH = path.resolve(
   '../../frontend/src/data/products.json'
 );
 
+/** Validación mínima de la forma del catálogo antes de sembrar. */
+function validateCatalog(data) {
+  const errors = [];
+  if (!Array.isArray(data.categories) || !data.categories.length) errors.push('categories vacío');
+  if (!Array.isArray(data.products) || !data.products.length) errors.push('products vacío');
+  const catIds = new Set((data.categories || []).map((c) => c.id));
+  for (const p of data.products || []) {
+    if (!p.id) errors.push('producto sin id');
+    if (!catIds.has(p.category)) errors.push(`${p.id}: categoría desconocida "${p.category}"`);
+    if (!Array.isArray(p.prices) || !p.prices.length) errors.push(`${p.id}: sin precios`);
+    for (const pr of p.prices || []) {
+      if (typeof pr.price !== 'number' || pr.price <= 0) errors.push(`${p.id}: precio inválido`);
+      if (!pr.size) errors.push(`${p.id}: tamaño sin nombre`);
+    }
+  }
+  if (errors.length) {
+    throw new Error(`products.json inválido:\n - ${errors.join('\n - ')}`);
+  }
+}
+
 async function main() {
   const raw = fs.readFileSync(DATA_PATH, 'utf-8');
   const data = JSON.parse(raw);
+  validateCatalog(data);
 
   console.log(`Sembrando desde ${DATA_PATH}`);
 

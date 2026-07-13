@@ -37,6 +37,7 @@ export class ContactForm {
             nombre: this.form.nombre.value,
             email: this.form.email.value,
             mensaje: this.form.mensaje.value,
+            website: this.form.website?.value || '', // honeypot
         };
 
         const error = this.validate(data);

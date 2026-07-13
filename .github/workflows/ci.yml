@@ -21,11 +21,34 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci
       - run: npm run lint
+      - name: Prettier (informativo)
+        run: npm run format:check
+        continue-on-error: true
       - run: npm test
       - run: npm run build
+      - name: Presupuesto de bundle
+        run: npm run size
+
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npx playwright test
 
   backend:
-    name: Backend (test)
+    name: Backend (unit)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -38,4 +61,37 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
+      - run: npm test
+
+  backend-integration:
+    name: Backend (integración · Postgres)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_DB: pizzeria
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U admin -d pizzeria"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://admin:testpass@localhost:5432/pizzeria?schema=public
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm run generate
+      - run: npx prisma migrate deploy
+      - run: npm run seed
       - run: npm test

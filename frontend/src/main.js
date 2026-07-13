@@ -13,17 +13,32 @@ import { ProductModal } from './components/ProductModal.js';
 import { ShoppingCart } from './components/ShoppingCart.js';
 import { ImageOptimizer } from './components/ImageOptimizer.js';
 
-// PWA Service Worker Registration
-registerSW({
+// PWA Service Worker Registration con banner de actualización persistente
+const updateSW = registerSW({
     onNeedRefresh() {
-        if (confirm('Nueva versión disponible. ¿Recargar?')) {
-            window.location.reload();
-        }
+        showUpdateBanner(() => updateSW(true));
     },
     onOfflineReady() {
         console.log('App lista para usar offline');
     },
 });
+
+function showUpdateBanner(onUpdate) {
+    if (document.getElementById('pwa-update')) return;
+    const bar = document.createElement('div');
+    bar.id = 'pwa-update';
+    bar.setAttribute('role', 'status');
+    bar.className =
+        'fixed z-[70] bottom-4 left-1/2 -translate-x-1/2 w-[92%] max-w-md bg-primary text-white ' +
+        'rounded-xl shadow-glow px-4 py-3 flex items-center gap-3';
+    bar.innerHTML = `
+        <span class="text-sm font-semibold flex-grow">Hay una nueva versión disponible.</span>
+        <button type="button" data-update class="bg-white text-primary text-sm font-bold px-3 py-1.5 rounded-lg">Actualizar</button>
+        <button type="button" data-dismiss aria-label="Descartar" class="text-white/80 hover:text-white text-xl leading-none">&times;</button>`;
+    bar.querySelector('[data-update]').addEventListener('click', onUpdate);
+    bar.querySelector('[data-dismiss]').addEventListener('click', () => bar.remove());
+    document.body.appendChild(bar);
+}
 
 // ==================== ANIMACIONES AL SCROLL ====================
 

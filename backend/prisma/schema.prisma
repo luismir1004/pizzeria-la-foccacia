@@ -60,3 +60,14 @@ model Extra {
   @@index([productId])
   @@map("extras")
 }
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String
+  mensaje   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("contact_messages")
+}

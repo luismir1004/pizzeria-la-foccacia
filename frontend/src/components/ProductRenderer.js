@@ -59,7 +59,7 @@ export class ProductRenderer {
         i < product.prices.length - 1 ? 'border-b border-primary/10 pb-1' : ''
       }">
         <span class="text-text-muted">${p.size}</span>
-        <span class="font-bold text-primary">$${Number(p.price).toFixed(2)}</span>
+        <span class="font-bold text-primary-dark dark:text-primary">$${Number(p.price).toFixed(2)}</span>
       </div>`
       )
       .join('');

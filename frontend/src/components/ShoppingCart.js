@@ -44,6 +44,12 @@ export class ShoppingCart {
         this.cartBackdrop?.addEventListener('click', () => this.close());
         this.checkoutBtn?.addEventListener('click', () => this.checkout());
 
+        // Accesibilidad: Escape cierra, Tab queda atrapado dentro del drawer.
+        this.cartDrawer.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.close();
+            if (e.key === 'Tab') this.trapFocus(e);
+        });
+
         document.addEventListener('add-to-cart', (e) => {
             this.addItem(e.detail);
             this.showToast(`${e.detail.title} añadido al pedido`);
@@ -98,12 +104,14 @@ export class ShoppingCart {
     }
 
     open() {
+        this.lastFocused = document.activeElement;
         this.cartDrawer.classList.remove('hidden');
         this.cartDrawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         requestAnimationFrame(() => {
             this.cartBackdrop.classList.remove('opacity-0');
             this.cartPanel.classList.remove('translate-x-full');
+            this.closeBtn?.focus();
         });
     }
 
@@ -114,7 +122,24 @@ export class ShoppingCart {
         setTimeout(() => {
             this.cartDrawer.classList.add('hidden');
             document.body.style.overflow = '';
+            this.lastFocused?.focus?.();
         }, 300);
+    }
+
+    trapFocus(e) {
+        const nodes = [...this.cartPanel.querySelectorAll(
+            'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+        )].filter((n) => n.offsetParent !== null);
+        if (!nodes.length) return;
+        const first = nodes[0];
+        const last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     }
 
     addItem(product) {

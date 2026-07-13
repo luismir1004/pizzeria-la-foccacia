@@ -564,7 +564,8 @@ img.loaded {
 	font-weight: 700;
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
-	color: var(--color-primary);
+	/* primary-dark para contraste AA del texto pequeño sobre fondo claro */
+	color: var(--color-primary-dark);
 	display: inline-flex;
 	align-items: center;
 	gap: 0.6rem;
@@ -593,7 +594,7 @@ img.loaded {
 	font-weight: 700;
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
-	color: var(--color-primary);
+	color: var(--color-primary-dark);
 }
 
 /* Ticker / marquesina de ingredientes */
